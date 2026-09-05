@@ -1,0 +1,16 @@
+# Render configuration for the News Pulse backend.
+# Render can read this automatically, or you can enter
+# the same values by hand in the dashboard.
+
+services:
+  - type: web
+    name: news-pulse-api
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "22"

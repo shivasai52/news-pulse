@@ -95,6 +95,22 @@ update the matching requirement file and the matching test.
 
 ---
 
+## 4b. Deployment
+
+Two separate hosts. Netlify serves static files only, so the Express
+backend cannot live there.
+
+| Part | Host | Config file |
+|---|---|---|
+| Frontend | Netlify | `netlify.toml` |
+| Backend | Render | `render.yaml` |
+
+- The backend reads its port from `process.env.PORT`. Never hardcode it again.
+- After the backend is live, set `VITE_API_URL` in the Netlify dashboard to the
+  Render URL, then redeploy the frontend. Without it the live site shows no news.
+- The free Render plan sleeps when idle, so the first request can take
+  around 50 seconds. That is expected, not a bug.
+
 ## 5. API contract
 
 | Route | Returns |

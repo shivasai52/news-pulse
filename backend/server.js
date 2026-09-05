@@ -12,7 +12,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = 5000;
+// Hosting platforms (Render, Railway) inject their own port.
+// Fall back to 5000 for local development.
+const PORT = process.env.PORT || 5000;
 
 
 // Home route
@@ -76,6 +78,6 @@ app.get("/api/report", async (req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(
-    `News Pulse Backend running on http://localhost:${PORT}`
+    `News Pulse Backend running on port ${PORT}`
   );
 });
