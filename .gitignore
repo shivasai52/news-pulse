@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Environment variables - never commit secrets
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Claude local overrides (personal, not shared)
+CLAUDE.local.md
+.claude/settings.local.json
+
+# Playwright
+test-results/
+playwright-report/
+
+# Accidental files
+juj
