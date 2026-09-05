@@ -4,6 +4,13 @@ import "./App.css";
 
 const REFRESH_TIME = 10 * 60;
 
+// Backend base URL.
+// Set VITE_API_URL in frontend/.env for deployment.
+// Falls back to the local backend so `npm run dev` works with no setup.
+const API_BASE =
+  import.meta.env.VITE_API_URL ||
+  "http://localhost:5000";
+
 function App() {
   const [view, setView] = useState("news");
 
@@ -39,7 +46,7 @@ function App() {
       setError("");
 
       const response = await axios.get(
-        "http://localhost:5000/api/news"
+        `${API_BASE}/api/news`
       );
 
       if (response.data.success) {
@@ -138,7 +145,7 @@ function App() {
 
       const response =
         await axios.get(
-          "http://localhost:5000/api/report"
+          `${API_BASE}/api/report`
         );
 
       if (response.data.success) {

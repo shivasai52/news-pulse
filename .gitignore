@@ -30,3 +30,6 @@ playwright-report/
 
 # Accidental files
 juj
+
+# Playwright browsers cache
+.cache/

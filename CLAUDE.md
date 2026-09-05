@@ -70,6 +70,29 @@ npm run dev
 
 Or double-click `START-NEWS-PULSE.bat`.
 
+### Configuration
+
+The frontend reads the backend URL from `frontend/.env`:
+
+```
+VITE_API_URL=http://localhost:5000
+```
+
+- `frontend/.env.example` is committed. `frontend/.env` is not.
+- Never hardcode a backend URL in `App.jsx` again — use `API_BASE`.
+
+### Tests
+
+```bash
+npm install                      # once, in the project root
+npx playwright install chromium  # once
+npm run test:e2e                 # backend must be running first
+```
+
+Tests live in `tests/news-pulse.spec.js` and are named after the requirement
+IDs they cover (N-2, N-5, R-1, NFR-3 and so on). When you change behaviour,
+update the matching requirement file and the matching test.
+
 ---
 
 ## 5. API contract
@@ -135,9 +158,12 @@ BBC · Times of India · The Guardian · Hacker News · NPR
 1. `App_backup.jsx` is dead code and should be deleted.
 2. The feed list is duplicated in `newsService.js` and `reportService.js`. It belongs in one shared `config/feeds.js`.
 3. `refreshStatus: "Working"` in `reportService.js` is hardcoded — it stays green even when all 5 feeds fail.
-4. The API URL `http://localhost:5000` is hardcoded in `App.jsx`. It must move to a Vite env variable before deploying.
-5. `backend/juj` is an accidental terminal log. Delete it.
-6. ESLint reports React Hook errors in `App.jsx` (lines 173 and 223).
+4. `backend/juj` is an accidental terminal log. Delete it.
+5. ESLint reports React Hook errors in `App.jsx` (lines 173 and 223).
+
+Fixed already — do not reintroduce:
+
+- The API URL is no longer hardcoded. It comes from `VITE_API_URL`.
 
 ---
 

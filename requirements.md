@@ -87,7 +87,7 @@ those sources are actually working.
 
 ## 7. Open items
 
-- [ ] Move the API URL into a Vite environment variable.
+- [x] Move the API URL into a Vite environment variable. **Done** — `VITE_API_URL`.
 - [ ] Make `refreshStatus` reflect real feed health instead of a fixed string.
 - [ ] Delete `App_backup.jsx` and `backend/juj`.
 - [ ] Move the shared feed list into one config file.
