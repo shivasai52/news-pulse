@@ -1,3 +1,7 @@
+// =========================
+// NEWS CARD
+// =========================
+
 function NewsCard({ article }) {
   return (
     <div className="news-card">
